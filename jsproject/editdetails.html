@@ -1,0 +1,43 @@
+<html>
+<head>
+  <title>edit module</title>
+  <link rel="stylesheet" href="dashboardstyle.css">
+</head>
+<body>
+    <form action="submitediteddetails.php" method="POST">
+        <div class="container">  
+          <label for="name" ><b>Name</b></label>
+          <br>
+          <input type="text" placeholder="Enter name" id="name" name="Sname" size="3" required>
+          <label id="errorname" class="errormsg"></label>
+          <label id="noerrorname" class="noerror"></label>
+          <br>
+      
+          <label for="email"><b>Email</b></label>
+          <br>
+          <input type="text" placeholder="Enter Email" id="emailID" name="Semail" required>
+          <label id="erroremail" class="errormsg"></label>
+          <label id="noerroremail" class="noerror"></label>
+          <br>
+      
+      
+          <label for="phone"><b>Phone</b></label>
+          <br>
+          <input type="text" placeholder="Enter contact details" id="phone" name="Sphone" required>
+          <label id="errorphone" class="errormsg"></label>
+          <label id="noerrorphone" class="noerror"></label>
+          <br>
+      
+      
+           <label for="dob"><b>Gender</b></label>
+          <br>
+          <div id="radio_container">
+          <input type="radio" value="M" name="gender" ><span id="cnt">Male</span>
+          <input type="radio" value="F" name="gender"><span id="cnt">Female</span>
+          <br>
+        </div>
+        <input type="submit" id="main_button">
+      </form>
+      
+</body>  
+</html>

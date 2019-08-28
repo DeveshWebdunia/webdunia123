@@ -1,0 +1,129 @@
+body {font-family: Arial, Helvetica, sans-serif;
+    background-size: cover;
+
+}
+* {box-sizing: border-box}
+
+/* Full-width input fields */
+input[type=text], input[type=password],input[type=radio],input[type=date],input[type=url],input[type=number]{
+  width: 60%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+#main_button
+{
+  width: 20%;
+  padding: 15px;
+  margin: 5px 0 5px 200px;
+  display: inline-block;
+  border: none;
+  background:  grey;
+  color:white;
+}
+
+
+input[type=text]:focus, input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+} 
+
+/* hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+} */
+.container {
+  padding: 16px; 
+}
+/* error stylings */
+.error{
+	display: none;
+}		
+
+.error_show{
+	color: red;
+	margin-left: 10px;
+}
+
+.noerror
+{
+color : green;
+}
+.errormsg
+{
+  color: red;
+}
+#output
+{
+  position:absolute;
+   top:0;
+   right:0;
+   border: 1px solid black;
+   padding: 20px;
+
+}
+#head
+{
+  border :1px solid black ;
+  padding :20px;
+  background-color :lightgray;
+}
+#foot
+{
+  border :1px solid black ;
+  padding :30px;
+  background-color :lightgray;
+}
+#logo
+{
+  float :left;
+}
+#slider_container
+{
+  border :1px solid black ;
+  padding :30px;
+  background-color :lightgray;
+  width :100%;
+ 
+}
+#form_container
+{
+  margin-left: 30%;
+}
+#radio_container
+{
+  width: 40%; 
+}
+#admin_button
+{
+  width: 20%;
+  padding: 10px;
+  margin: 5px 0 5px 800px;
+  display: inline-block;
+  border: none;
+  background:  grey;
+  color:white;
+
+}
+#admin_submit_button
+{
+  width: 30%;
+  padding: 10px;
+  margin: 5px 0 5px 50px;
+  display: inline-block;
+  border: none;
+  background:  grey;
+  color:white;
+}
+
+.mySlides {
+    display:none;
+}
+label
+{
+    color :white;
+    font-family: cursive;
+    font-size:20px;
+}
