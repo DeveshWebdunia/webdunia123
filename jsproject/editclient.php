@@ -18,10 +18,10 @@
   border: none;
   background: #f1f1f1;
   }
-  input[type=file]
+
+ input[type=file]
   {
-    width: 100%;
-  padding: 15px;
+    width: 20%;
   margin: 5px 0 22px 0;
   display: inline-block;
   border: none;
@@ -36,12 +36,13 @@
   border: none;
   background:  grey;
   color:white;
-}
+} 
+
 .container
 {
     padding: 16px;
 }
-.imagebox
+ .imagebox
 {
     border :0px solid black;
     width :200px;
@@ -55,7 +56,7 @@ label
     color :white;
     font-family: cursive;
     font-size:20px;
-}
+} 
     </style>
 
 <script>
@@ -101,6 +102,19 @@ districtSel.options[districtSel.options.length] = new Option(district[i], distri
 }
 }
 }
+function readURL(input) {
+             if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#imageTobox')
+                        .attr('src', e.target.result)
+                        .width(199)
+                        .height(227);
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
 </script>
 </head>
 <?php
@@ -145,25 +159,10 @@ $result1=mysqli_query($conn,$sql);
       </select>
       <br> 
       <label for="name"><b>pincode</b></label> <br><input type="number" name="pincode" placeholder="enter pincode"> <br>
-      <input type='file' onchange="readURL(this);"  name="image" />
+      <label for="name"><b>Upload profile image here</b></label><input type='file' onchange="readURL(this);"  name="image" />
        <br>
       <input type="submit" value="update" id="update_btn" name="updateit" class="form-control">
     </div>
     </form>
-    <script>
-             function readURL(input) {
-             if (input.files && input.files[0]) {
-                var reader = new FileReader();
-
-                reader.onload = function (e) {
-                    $('#imageTobox')
-                        .attr('src', e.target.result)
-                        .width(199)
-                        .height(227);
-                };
-                reader.readAsDataURL(input.files[0]);
-            }
-        }
-        </script>
 </body>
 </html>
