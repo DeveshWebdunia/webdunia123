@@ -1,4 +1,5 @@
 <?php
+// getting values from dashboard.php
  $name = (isset($_POST['Sname']) ? $_POST['Sname'] : '');
  $phone = (isset($_POST['Sphone']) ? $_POST['Sphone'] : '');
  $email = (isset($_POST['Semail']) ? $_POST['Semail'] : '');
@@ -14,18 +15,19 @@ if (!empty($name)  && !empty($email) && !empty($phone) && !empty($gender)) {
     if (mysqli_connect_error()) {
      die('Connect Error('. mysqli_connect_errno().')'. mysqli_connect_error());
     } else {
+      //  executing query
      $INSERT = "INSERT Into clientlisting( name , email, phone, gender) values( ?, ?, ?, ?)";
       $stmt = $conn->prepare($INSERT);
       $stmt->bind_param("ssis", $name, $email, $phone, $gender);
       $stmt->execute();
       $rnum = $stmt->num_rows;
-     // echo "value inserted";
+     // redirecting to locations ;
       header("location:dashboard.php");
       if ($rnum==0) {
         $stmt->close();
        }
     }
-    $conn->close(); 
+    $conn->close(); //closing connection 
 }
 else 
 {
