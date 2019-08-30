@@ -1,10 +1,12 @@
 <?php
+session_start();
 // getting values from dashboard.php
  $name = (isset($_POST['Sname']) ? $_POST['Sname'] : '');
  $phone = (isset($_POST['Sphone']) ? $_POST['Sphone'] : '');
  $email = (isset($_POST['Semail']) ? $_POST['Semail'] : '');
  $gender = (isset($_POST['gender']) ? $_POST['gender'] : '');
-if (!empty($name)  && !empty($email) && !empty($phone) && !empty($gender)) {
+if (!empty($name)  && !empty($email) && !empty($phone) && !empty($gender))
+{
  $host = "localhost";
     $dbUsername = "root";
     $dbPassword = "";
@@ -22,7 +24,10 @@ if (!empty($name)  && !empty($email) && !empty($phone) && !empty($gender)) {
       $stmt->execute();
       $rnum = $stmt->num_rows;
      // redirecting to locations ;
+    
       header("location:dashboard.php");
+        $sucess= "registered sucessfully";
+        $_SESSION['errormessage1']=$sucess;
       if ($rnum==0) {
         $stmt->close();
        }
@@ -32,5 +37,7 @@ if (!empty($name)  && !empty($email) && !empty($phone) && !empty($gender)) {
 else 
 {
    header("location:dashboard.php");
+   $errormessage ="registration failed";
+   $_SESSION['errormessage']=$errormessage;  
 }
 ?>
