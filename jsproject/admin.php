@@ -1,4 +1,5 @@
  <?php 
+//  creating connection 
 	$server = "localhost";
 	$user = "root";
 	$pass = "";
@@ -7,6 +8,7 @@
 ?> 
 <html>
 <head>
+	<!-- linking Scripts and JS -->
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8=" crossorigin="anonymous">
             </script>
            <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -15,7 +17,7 @@
            <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	<title>admin header</title>
 	<script>
- 
+//  client and customer toggle
  $(document).ready(function() {
   $("#customer_button").click(function(){
 	$("#clientlist").hide();
@@ -29,6 +31,7 @@
 });
 	</script>
 <style>
+	/* styling of the elements */
 body {font-family: Arial, Helvetica, sans-serif;}
 * {box-sizing: border-box}
 #head
@@ -102,92 +105,8 @@ table.hovertable td {
 	padding :5px;
 	border : 0px solid black;
 }
-
-    </style>
-</head>
-<body style=" background-image: url('img/cover_dashboard.jpg'); background-size: cover;">
-<header id="head">
-  <!-- <h1>header start here</h1> -->
-    
-  <img src="StockMarket.png" width="100px;" height="50px;">
-  <h1 style="margin-left: 6px;margin-top :0px; margin-right :0px; margin-bottom :0px; ">StockMarket</h1>
-</header>
-<div id="sidemenu">
-<button class="adminbutton" id="client_button">client List</button>
-<button class="adminbutton" id="customer_button">customers List</button>
-</div>
-<?php
-	$table = "clientlisting";
-	// following code is used to select all the data or row from the table
-	$sqlQ = "SELECT client_id,name,email,phone,gender FROM $table WHERE status='0' ";
-	$res = $conn->query($sqlQ);
-	?>
-
-	<table class="hovertable" id ="customerlist">
-<tr>
-	<th>ID</th><th>name</th><th>email</th><th>phone</th><th>gender</th><th></th><th></th>
-</tr>
-<?php
-	if($res)
-	{
-		while($row = mysqli_fetch_assoc($res))
-		{
-	?>
-<tr onmouseover="this.style.backgroundColor='grey';" onmouseout="this.style.backgroundColor='white';">
-	<td><?php echo $row['client_id'];?></td><td><?php echo $row['name'];?></td><td><?php echo $row['email'];?></td>
-	<td><?php echo $row['phone'];?></td><td><?php echo $row['gender'];?></td>
-	<td><a href= deleterow.php?client_id=<?php echo $row['client_id'];?>><button>Delete</button></a></td>
-	<td><a href= addrow.php?client_id=<?php echo $row['client_id'];?>><button>Activate</button></a></td>
-</tr>
-<?php
-		}
-		
-	}
-$sql="select count('name') from clientlisting where status= 0";
-$result=mysqli_query($conn,$sql);
-$row=mysqli_fetch_array($result);
-echo "<div id='client_count'><h3 style='font-family:cursive;'>Hello Devesh !</h3><h3 style='font-family:cursive;'> NO OF Customers :$row[0]<h3></div><hr>";
-
-$sqlcount="select count('name') from clientlisting where status= 1";
-$result=mysqli_query($conn,$sqlcount);
-$rowcount=mysqli_fetch_array($result);
-echo "<div id='customer_count'><h3 style='font-family:cursive'> NO OF Clients :$rowcount[0]<h3></div>";
-//mysqli_close($conn);
-?>
-<!-- CSS goes in the document HEAD or added to your external stylesheet -->
-
-<?php
-	$sqlr = "SELECT* FROM clientlisting WHERE status='1'";
-	$result = $conn->query($sqlr);
-	?>
-	<table class="Clienthovertable" id="clientlist">
-<tr>
-	<th>ID</th><th>name</th><th>email</th><th>phone</th><th>gender</th><th></th><th></th>
-</tr>
-<?php
-	if($result)
-	{
-		while($row = mysqli_fetch_assoc($result))
-		{
-	?>
-<tr onmouseover="this.style.backgroundColor='grey';" onmouseout="this.style.backgroundColor='white';">
-	<td><?php echo $row['client_id'];?></td><td><?php echo $row['name'];?></td><td><?php echo $row['email'];?></td>
-	<td><?php echo $row['phone'];?></td><td><?php echo $row['gender'];?></td>
-	<td><a href= editclient.php?client_id=<?php echo $row['client_id'];?>><button>Edit</button></a></td>
-	<td><a href= updaterow.php?client_id=<?php echo $row['client_id'];?>><button>Inactivate</button></a></td>
-</tr>
-<?php
-		}
-		
-	}
-	else 
-	{
-		echo "<p>Error occurred...exiting...</p>";
-		exit();
-	}
-	?>
-<style>
-table.Clienthovertable {
+	/* styling for table */
+	table.Clienthovertable {
 	font-family: verdana,arial,sans-serif;
 	font-size:15px;
 	color:black;
@@ -216,6 +135,91 @@ table.Clienthovertable td {
 	border-style: solid;
 	border-color: #a9c6c9;
 }
-</style>
+/* styling ends here */
+    </style>
+</head>
+<body style=" background-image: url('img/cover_dashboard.jpg'); background-size: cover;">
+<header id="head">
+  <!-- <h1>header start here</h1> -->
+    
+  <img src="StockMarket.png" width="100px;" height="50px;">
+  <h1 style="margin-left: 6px;margin-top :0px; margin-right :0px; margin-bottom :0px; ">StockMarket</h1>
+</header>
+<div id="sidemenu">
+<button class="adminbutton" id="client_button">client List</button>
+<button class="adminbutton" id="customer_button">customers List</button>
+</div>
+<?php
+	$table = "clientlisting";
+	// code is used to select all the data or row from the table
+	$sqlQ = "SELECT client_id,name,email,phone,gender FROM $table WHERE status='0' ";
+	$res = $conn->query($sqlQ);
+	?>
+
+	<table class="hovertable" id ="customerlist">
+<tr>
+	<th>ID</th><th>name</th><th>email</th><th>phone</th><th>gender</th><th></th><th></th>
+</tr>
+<?php
+// fetching databse records as a associative array
+	if($res)
+	{
+		while($row = mysqli_fetch_assoc($res))
+		{
+	?>
+<tr onmouseover="this.style.backgroundColor='grey';" onmouseout="this.style.backgroundColor='white';">
+	<td><?php echo $row['client_id'];?></td><td><?php echo $row['name'];?></td><td><?php echo $row['email'];?></td>
+	<td><?php echo $row['phone'];?></td><td><?php echo $row['gender'];?></td>
+	<td><a href= deleterow.php?client_id=<?php echo $row['client_id'];?>><button>Delete</button></a></td>
+	<td><a href= addrow.php?client_id=<?php echo $row['client_id'];?>><button>Activate</button></a></td>
+</tr>
+<?php
+		}	
+	}
+	// executing query for listing
+$sql="select count('name') from clientlisting where status= 0";
+$result=mysqli_query($conn,$sql);
+$row=mysqli_fetch_array($result);
+echo "<div id='client_count'><h3 style='font-family:cursive;'>Hello Devesh !</h3><h3 style='font-family:cursive;'> NO OF Customers :$row[0]<h3></div><hr>";
+//executing query for count name client
+$sqlcount="select count('name') from clientlisting where status= 1";
+$result=mysqli_query($conn,$sqlcount);
+$rowcount=mysqli_fetch_array($result);
+echo "<div id='customer_count'><h3 style='font-family:cursive'> NO OF Clients :$rowcount[0]<h3></div>";
+//mysqli_close($conn);
+?>
+<!-- CSS goes in the document HEAD or added to your external stylesheet -->
+
+<?php
+	$sqlr = "SELECT* FROM clientlisting WHERE status='1'";
+	$result = $conn->query($sqlr);
+	?>
+	<table class="Clienthovertable" id="clientlist">
+<tr>
+	<th>ID</th><th>name</th><th>email</th><th>phone</th><th>gender</th><th></th><th></th>
+</tr>
+<?php
+// fetching databse records as a associative array
+	if($result)
+	{
+		while($row = mysqli_fetch_assoc($result))
+		{
+	?>
+<tr onmouseover="this.style.backgroundColor='grey';" onmouseout="this.style.backgroundColor='white';">
+	<td><?php echo $row['client_id'];?></td><td><?php echo $row['name'];?></td><td><?php echo $row['email'];?></td>
+	<td><?php echo $row['phone'];?></td><td><?php echo $row['gender'];?></td>
+	<td><a href= editclient.php?client_id=<?php echo $row['client_id'];?>><button>Edit</button></a></td>
+	<td><a href= updaterow.php?client_id=<?php echo $row['client_id'];?>><button>Inactivate</button></a></td>
+</tr>
+<?php
+		}
+		
+	}
+	else 
+	{
+		echo "<p>Error occurred...exiting...</p>";
+		exit();
+	}
+	?>
 </body>
 </html>
