@@ -11,6 +11,13 @@ $errormsg1=$_SESSION['errormessage1'];
 }
 ?>
 <html>
+<style>
+  /* image  responsive */
+  .carousel-inner img {
+      width: 1300px;
+      height: 200px;
+  }
+  </style>
     <head>
     <!-- linking of CSS and JS files -->
             <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8=" crossorigin="anonymous">
@@ -22,10 +29,13 @@ $errormsg1=$_SESSION['errormessage1'];
            <script src="dashboardscript.js"></script>
            <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
            <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+           <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+           <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+           <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+           <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     </head>
 <body style=" background-image: url('img/cover_dashboard.jpg'); background-size: cover;"> 
 <?php
-
 if(!empty ($errormsg1))
 {
   echo "<label>".$errormsg1."</label>";
@@ -38,6 +48,24 @@ if(!empty ($errormsg1))
   <img src="StockMarket.png" width="100px;" height="50px;">
   <h1 style="margin-left: 6px;margin-top :0px; margin-right :0px; margin-bottom :0px; ">StockMarket</h1>
 </header>
+<div id ="slider_container" style="background-color: transparent; border :0px;">
+<!-- slider here -->
+<div id="demo" class="carousel slide" data-ride="carousel" data-interval="1000"> 
+  <!-- The slideshow -->
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="img/img1.jpg"  width="1100" height="500">
+    </div>
+    <div class="carousel-item">
+      <img src="img/img2.jpeg"  width="1100" height="500">
+    </div>
+    <div class="carousel-item">
+      <img src="img/img3.jpg" width="1100" height="500">
+    </div>
+  </div>
+</div>
+</div>
+<!-- slider end -->
 <!-- middle contents start here  -->
 <div id="form_container" style="border:0px solid rgb(22, 14, 14);width: 40%;" class="form-group">
 <!-- form starting from here -->
