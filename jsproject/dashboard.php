@@ -1,4 +1,15 @@
 <!DOCTYPE html>
+<?php
+session_start();
+if(isset($_SESSION['errormessage']))
+{
+$errormsg1=$_SESSION['errormessage'];
+}
+else if(isset($_SESSION['errormessage1']))
+{
+$errormsg1=$_SESSION['errormessage1'];
+}
+?>
 <html>
     <head>
     <!-- linking of CSS and JS files -->
@@ -13,6 +24,15 @@
            <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     </head>
 <body style=" background-image: url('img/cover_dashboard.jpg'); background-size: cover;"> 
+<?php
+
+if(!empty ($errormsg1))
+{
+  echo "<label>".$errormsg1."</label>";
+  session_unset();
+}
+?>
+
 <header id="head">
   <!-- <h1>header start here</h1> -->   
   <img src="StockMarket.png" width="100px;" height="50px;">
